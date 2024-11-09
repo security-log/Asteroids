@@ -1,9 +1,11 @@
 import pygame
 import sys
+
 from constants import * # importa todo desde el archivo constants.py
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 def main():
     pygame.init()
@@ -14,6 +16,7 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
 
     Player.containers = (updatable, drawable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # estos valores son para iniciar al player en el medio de la pantalla
@@ -21,6 +24,7 @@ def main():
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = updatable
     
+    Shot.containers = (updatable, drawable)
     asteroid_field = AsteroidField()
 
     # main loop
